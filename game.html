@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe Game!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="svg.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-light min-h-screen flex flex-col items-center justify-center p-4 transition-colors duration-300">
+
+    <div class="card card-bg card-shadow w-full max-w-md rounded-xl p-6 sm:p-8 text-center">
+        <header class="mb-6">
+            <h1 class="text-3xl sm:text-4xl font-bold text-themed-primary mb-2">
+                Tic Tac Toe
+            </h1>
+            <p id="statusMessage" class="text-lg text-themed-secondary">Player X's turn</p>
+        </header>
+
+        <div id="game-board" class="grid grid-cols-3 gap-2 sm:gap-3 w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 mx-auto mb-6 rounded-lg overflow-hidden shadow-inner">
+            <div class="cell flex justify-center items-center text-4xl sm:text-5xl md:text-6xl font-bold cursor-pointer" data-index="0"></div>
+            <div class="cell flex justify-center items-center text-4xl sm:text-5xl md:text-6xl font-bold cursor-pointer" data-index="1"></div>
+            <div class="cell flex justify-center items-center text-4xl sm:text-5xl md:text-6xl font-bold cursor-pointer" data-index="2"></div>
+            <div class="cell flex justify-center items-center text-4xl sm:text-5xl md:text-6xl font-bold cursor-pointer" data-index="3"></div>
+            <div class="cell flex justify-center items-center text-4xl sm:text-5xl md:text-6xl font-bold cursor-pointer" data-index="4"></div>
+            <div class="cell flex justify-center items-center text-4xl sm:text-5xl md:text-6xl font-bold cursor-pointer" data-index="5"></div>
+            <div class="cell flex justify-center items-center text-4xl sm:text-5xl md:text-6xl font-bold cursor-pointer" data-index="6"></div>
+            <div class="cell flex justify-center items-center text-4xl sm:text-5xl md:text-6xl font-bold cursor-pointer" data-index="7"></div>
+            <div class="cell flex justify-center items-center text-4xl sm:text-5xl md:text-6xl font-bold cursor-pointer" data-index="8"></div>
+        </div>
+
+        <div class="game-buttons">
+            <div class="my-3">
+            <button id="restartButton"
+                    class="btn-primary w-full sm:w-auto py-2.5 px-6 rounded-lg font-semibold text-base shadow-md hover:shadow-lg transition-all duration-200 ease-in-out transform hover:-translate-y-0.5">
+                Restart Game
+            </button>
+            </div>
+            <div class="my-3">
+                <a href="index.html" class="btn-secondary py-2.5 px-6 rounded-lg font-semibold text-base shadow-md hover:shadow-lg transition-all duration-200 ease-in-out transform hover:-translate-y-0.5">
+                    Change Mode
+                </a>
+            </div>
+        </div>
+
+        <div class="my-6 theme-icon">
+            <button id="themeToggleButton"
+                    class="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 py-2 px-4 rounded-lg text-sm hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200">
+            </button>
+        </div>
+
+        <footer class="border-t pt-6 border-gray-200 dark:border-gray-700">
+            <p class="text-xs text-themed-secondary">
+                All rights reserved &copy; <span id="currentYear"></span> - Mekdad Ghazal
+            </p>
+        </footer>
+    </div>
+
+    <script src="js.js" defer></script> <script src="game.js" defer></script> </body>
+</html>

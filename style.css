@@ -1,0 +1,212 @@
+/* Custom styles to integrate with Tailwind and for theme toggling */
+body {
+    font-family: 'Inter', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light Theme (default) */
+:root {
+    --bg-primary-light: #F9FAFB; /* gray-50 */
+    --bg-secondary-light: #FFFFFF; /* white */
+    --text-primary-light: #1F2937; /* gray-800 */
+    --text-secondary-light: #4B5563; /* gray-600 */
+    --accent-light: #3B82F6; /* blue-500 */
+    --accent-hover-light: #2563EB; /* blue-600 */
+    --game-board:transparent;
+    --bg-item:#cdcdcd4f;
+    --card-shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --winning-cell-bg-light: #90cdf4; /* A light blue for winning cells */
+    --winning-cell-text-light: #1A202C;
+}
+
+/* Dark Theme */
+.dark {
+    --bg-primary-dark: #111827; /* gray-900 */
+    --bg-secondary-dark: #1F2937; /* gray-800 */
+    --text-primary-dark: #F9FAFB; /* gray-50 */
+    --text-secondary-dark: #D1D5DB; /* gray-300 */
+    --accent-dark: #60A5FA; /* blue-400 */
+    --accent-hover-dark: #3B82F6; /* blue-500 */
+    --game-board:transparent;
+    --bg-item:rgba(51, 51, 51, 0.441);
+    --card-shadow-dark: 0 4px 6px -1px rgba(255, 255, 255, 0.05), 0 2px 4px -1px rgba(255, 255, 255, 0.03);
+    --winning-cell-bg-dark: #2c5282; /* A darker blue for winning cells in dark mode */
+    --winning-cell-text-dark: #E2E8F0;
+}
+
+/* Applying theme variables using Tailwind's JIT compiler friendly way */
+.theme-light {
+    background-color: var(--bg-primary-light);
+    color: var(--text-primary-light);
+}
+.theme-dark {
+    background-color: var(--bg-primary-dark);
+    color: var(--text-primary-dark);
+}
+
+.card{
+    position: relative;
+}
+.theme-icon{
+    position: absolute;
+    top: 2rem; /* Adjust as needed */
+    right: 2rem; /* Position to the right */
+}
+#themeToggleButton{
+    display: flex;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.card-bg {
+    background-color: var(--bg-secondary-light);
+    box-shadow: 0px 0px 20px -5px rgba(0,0,0,0.1); /* Softer shadow */
+}
+.dark .card-bg {
+    background-color: var(--bg-secondary-dark);
+    box-shadow: 0px 0px 20px -5px rgba(255,255,255,0.05); /* Softer shadow for dark */
+}
+
+.btn-primary {
+    background-color: var(--accent-light);
+    color: white;
+}
+.dark .btn-primary {
+    background-color: var(--accent-dark);
+    color: var(--text-primary-dark);
+}
+.btn-primary:hover {
+    background-color: var(--accent-hover-light);
+}
+.dark .btn-primary:hover {
+    background-color: var(--accent-hover-dark);
+}
+
+.btn-secondary {
+    background-color: #E5E7EB; /* gray-200 */
+    color: #374151; /* gray-700 */
+}
+.dark .btn-secondary {
+    background-color: #374151; /* gray-700 */
+    color: #D1D5DB; /* gray-300 */
+}
+    .btn-secondary:hover {
+    background-color: #D1D5DB; /* gray-300 */
+}
+.dark .btn-secondary:hover {
+    background-color: #4B5563; /* gray-600 */
+}
+
+
+.card-shadow {
+        box-shadow: var(--card-shadow-light);
+}
+.dark .card-shadow {
+        box-shadow: var(--card-shadow-dark);
+}
+
+.text-themed-primary {
+    color: var(--text-primary-light);
+}
+.dark .text-themed-primary {
+    color: var(--text-primary-dark);
+}
+.text-themed-secondary {
+    color: var(--text-secondary-light);
+}
+.dark .text-themed-secondary {
+    color: var(--text-secondary-dark);
+}
+
+
+#channelButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Reduced gap */
+}
+#channelButton > svg{
+    scale: 1.5; /* Slightly smaller */
+}
+#channelButton:hover{
+    background: var(--text-primary-light);
+    color:var(--bg-primary-light);
+}
+.dark #channelButton:hover{ /* Specific hover for dark mode */
+    background: var(--text-primary-dark);
+    color:var(--bg-primary-dark);
+}
+
+
+/* Game Style*/
+#game-board{
+    background: var(--game-board);
+    border: 1px solid var(--bg-item); /* Subtle border for the board */
+}
+#game-board div.cell{
+    background: var(--bg-item);
+    transition: background-color 0.2s ease-in-out; /* Smooth transition for hover/winning */
+}
+
+#game-board div.cell:hover {
+    background-color: rgba(0,0,0,0.1); /* Slight hover effect */
+}
+.dark #game-board div.cell:hover {
+    background-color: rgba(255,255,255,0.1); /* Slight hover effect for dark */
+}
+
+
+.cell{
+    line-height: 0!important; /* From your original CSS */
+    /* Ensure text is centered if it appears */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cell.x {
+    color: #EF4444; /* Red for X */
+}
+.dark .cell.x {
+    color: #F87171; /* Lighter red for X in dark mode */
+}
+
+.cell.o {
+    color: #3B82F6; /* Blue for O */
+}
+.dark .cell.o {
+    color: #60A5FA; /* Lighter blue for O in dark mode */
+}
+
+.cell.winning {
+    background-color: var(--winning-cell-bg-light) !important; /* Important to override hover */
+    color: var(--winning-cell-text-light) !important;
+    animation: pulse 0.8s infinite alternate;
+}
+.dark .cell.winning {
+    background-color: var(--winning-cell-bg-dark) !important;
+    color: var(--winning-cell-text-dark) !important;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.05);
+        opacity: 0.7;
+    }
+}
+
+.game-buttons{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
